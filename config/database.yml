@@ -1,0 +1,24 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: acer
+  password: 12344321
+
+development:
+  <<: *default
+  database: rails_bookmarks_development
+  username: acer
+  password: 12344321
+
+test:
+  <<: *default
+  database: rails_bookmarks_test
+  username: rails_bookmarks
+  password: password1
+
+production:
+  <<: *default
+  database: rails_bookmarks_production
+  username: rails_bookmarks
+  password: <%= ENV['RAILS_BOOKMARKS_DATABASE_PASSWORD'] %>
