@@ -30,4 +30,8 @@ group :development do
   gem 'spring'
 end
 
+# Authentication gem
 gem 'devise'
+
+# Bootstrap framework gem
+gem 'bootstrap-sass', '~> 3.3.6'
