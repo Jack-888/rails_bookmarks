@@ -35,3 +35,6 @@ gem 'devise'
 
 # Bootstrap framework gem
 gem 'bootstrap-sass', '~> 3.3.6'
+
+# Bootstrap for log in snd sign up
+gem 'devise-bootstrap-views'

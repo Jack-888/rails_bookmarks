@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+//*= require devise_bootstrap_views
 
 @import "bootstrap";
 body {
@@ -99,6 +100,6 @@ footer {
   margin-top: 100px;
 }
 
-.gray {
+.text-footer {
   color: #000;
 }
