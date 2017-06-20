@@ -4,19 +4,27 @@
 
 <table>
   <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
+  <tr>
+    <th>Url</th>
+    <th>Image bookmark</th>
+    <th>Title</th>
+    <th>Description</th>
+    <th colspan="3"></th>
+  </tr>
   </thead>
 
   <tbody>
-    <% @bookmarks.each do |bookmark| %>
+  <% @bookmarks.each do |bookmark| %>
       <tr>
+        <td><%= bookmark.url %></td>
+        <td><%= bookmark.image_bookmark %></td>
+        <td><%= bookmark.title %></td>
+        <td><%= bookmark.description %></td>
         <td><%= link_to 'Show', bookmark %></td>
         <td><%= link_to 'Edit', edit_bookmark_path(bookmark) %></td>
         <td><%= link_to 'Destroy', bookmark, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    <% end %>
+  <% end %>
   </tbody>
 </table>
 
