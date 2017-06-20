@@ -26,15 +26,21 @@ class BookmarksController < ApplicationController
   def create
     @bookmark = current_user.bookmarks.new(bookmark_params)
 
+    # Add BD :image_bookmark format last_url.png
     name_image_bookmark = @bookmark.url.split('/').last
     @bookmark.image_bookmark = "#{name_image_bookmark}.png".gsub!(/^\"|\"?$/, '')
 
+    # Add image url in app/assets/images/image_bookmark/
     sm = ScreenshotMachine.new(@bookmark.url)
     # Returns a binary stream of the file
     arr = sm.screenshot
     File.open("app/assets/images/image_bookmark/#{name_image_bookmark}.png", 'wb') { |fp| fp.write(arr) }
 
-
+    # Add title in DD
+    document = Nokogiri::HTML(open(@bookmark.url))
+    document.search('title').each do |link|
+      @bookmark.title = link.content
+    end
 
     respond_to do |format|
       if @bookmark.save
@@ -79,6 +85,6 @@ class BookmarksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bookmark_params
-      params.require(:bookmark).permit( :url, :image_bookmark, :title, :description, :user_id, :published_at)
+      params.require(:bookmark).permit( :url, :user_id)
     end
 end

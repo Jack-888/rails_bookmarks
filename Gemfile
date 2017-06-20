@@ -42,3 +42,5 @@ gem 'devise-bootstrap-views'
 
 
 gem 'screenshot_machine'
+
+gem 'nokogiri'
