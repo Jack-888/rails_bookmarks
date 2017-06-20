@@ -26,6 +26,13 @@ class BookmarksController < ApplicationController
   def create
     @bookmark = current_user.bookmarks.new(bookmark_params)
 
+
+    image = MiniMagick::Image.open(@bookmark.url)
+    image.contrast
+    image.resize "242x200"
+    image.write("app/assets/images/from_internets.jpg")
+
+
     respond_to do |format|
       if @bookmark.save
         format.html { redirect_to :bookmarks, notice: 'Bookmark was successfully created.' }
