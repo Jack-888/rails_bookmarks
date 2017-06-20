@@ -17,8 +17,14 @@ ActiveRecord::Schema.define(version: 20170617171707) do
   enable_extension "plpgsql"
 
   create_table "bookmarks", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "url"
+    t.string   "image_bookmark"
+    t.string   "title"
+    t.text     "description"
+    t.integer  "user_id"
+    t.datetime "published_at"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "users", force: :cascade do |t|

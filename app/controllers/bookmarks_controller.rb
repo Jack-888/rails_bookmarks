@@ -1,5 +1,5 @@
 class BookmarksController < ApplicationController
-  before_action :authenticate_user! #:set_bookmark, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, :set_bookmark, only: [:show, :edit, :update, :destroy]
 
   # GET /bookmarks
   # GET /bookmarks.json
