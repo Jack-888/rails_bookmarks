@@ -26,11 +26,11 @@ class BookmarksController < ApplicationController
   def create
     @bookmark = current_user.bookmarks.new(bookmark_params)
 
-
+    name_image_bookmark = @bookmark.url.split('/').last
     sm = ScreenshotMachine.new(@bookmark.url)
     # Returns a binary stream of the file
     arr = sm.screenshot
-    File.open("app/assets/images/image_bookmark/file.png", 'wb') { |fp| fp.write(arr) }
+    File.open("app/assets/images/image_bookmark/#{name_image_bookmark}.png", 'wb') { |fp| fp.write(arr) }
 
 
 
