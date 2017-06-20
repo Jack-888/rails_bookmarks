@@ -40,5 +40,5 @@ gem 'bootstrap-sass', '~> 3.3.6'
 # Bootstrap for log in snd sign up
 gem 'devise-bootstrap-views'
 
-gem "mini_magick"
+
 gem 'screenshot_machine'

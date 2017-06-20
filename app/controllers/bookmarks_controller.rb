@@ -26,18 +26,12 @@ class BookmarksController < ApplicationController
   def create
     @bookmark = current_user.bookmarks.new(bookmark_params)
 
-    ScreenshotMachine.configure do |config|
-      config.key = '31c6db'
-    end
+
     sm = ScreenshotMachine.new(@bookmark.url)
     # Returns a binary stream of the file
     arr = sm.screenshot
-    File.open('name_image.png', 'wb') { |fp| fp.write(arr) }
+    File.open("app/assets/images/image_bookmark/file.png", 'wb') { |fp| fp.write(arr) }
 
-    # image = MiniMagick::Image.open(@bookmark.url)
-    # image.contrast
-    # image.resize "242x200"
-    # image.write("app/assets/images/from_internets.jpg")
 
 
     respond_to do |format|
