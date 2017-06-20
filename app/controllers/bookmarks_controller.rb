@@ -27,6 +27,8 @@ class BookmarksController < ApplicationController
     @bookmark = current_user.bookmarks.new(bookmark_params)
 
     name_image_bookmark = @bookmark.url.split('/').last
+    @bookmark.image_bookmark = "#{name_image_bookmark}.png".gsub!(/^\"|\"?$/, '')
+
     sm = ScreenshotMachine.new(@bookmark.url)
     # Returns a binary stream of the file
     arr = sm.screenshot
