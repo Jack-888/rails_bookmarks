@@ -28,7 +28,7 @@ class BookmarksController < ApplicationController
 
     # Add BD :image_bookmark format last_url.png
     name_image_bookmark = @bookmark.url.split('/').last
-    @bookmark.image_bookmark = "images/" + "#{name_image_bookmark}.png".gsub!(/^\"|\"?$/, '')
+    @bookmark.image_bookmark = "#{name_image_bookmark}.png".gsub!(/^\"|\"?$/, '')
 
     # Add image url in app/assets/images/image_bookmark/
     sm = ScreenshotMachine.new(@bookmark.url)

@@ -16,7 +16,9 @@
   <% @bookmarks.each do |bookmark| %>
       <tr>
         <td><%= bookmark.url %></td>
-        <td><%= bookmark.image_bookmark %></td>
+
+        <td><%= image_tag bookmark.image_bookmark %></td>
+
         <td><%= bookmark.title %></td>
         <td><%= link_to 'Show', bookmark %></td>
         <td><%= link_to 'Edit', edit_bookmark_path(bookmark) %></td>
