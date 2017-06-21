@@ -1,81 +1,31 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Bookmarks</h1>
-
-<table>
-  <thead>
-  <tr>
-    <th>Url</th>
-    <th>Image bookmark</th>
-    <th>Title</th>
-    <th colspan="3"></th>
-  </tr>
-  </thead>
-
-  <tbody>
-  <% @bookmarks.each do |bookmark| %>
-      <tr>
-        <td><%= bookmark.url %></td>
-
-        <td><%= image_tag bookmark.image_bookmark %></td>
-
-        <td><%= bookmark.title %></td>
-        <td><%= link_to 'Show', bookmark %></td>
-        <td><%= link_to 'Edit', edit_bookmark_path(bookmark) %></td>
-        <td><%= link_to 'Destroy', bookmark, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-  <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Bookmark', new_bookmark_path %>
-
-
-<div class="row">
-  <div class="col-sm-6 col-md-4">
-    <div class="panel panel-primary">
-      <div class="panel-heading">
-        <h3 class="panel-title">Panel title</h3>
-      </div>
-      <div class="panel-body">
-        <img src="..." alt="...">
-        <div class="caption">
-          <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-sm-6 col-md-4">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Panel title</h3>
-      </div>
-      <div class="panel-body">
-        <img src="..." alt="...">
-        <div class="caption">
-          <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-sm-6 col-md-4">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Panel title</h3>
-      </div>
-      <div class="panel-body">
-        <img src="..." alt="...">
-        <div class="caption">
-          <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
-
+<div class="col-md-12">
+  <button id="singlebutton" name="singlebutton" class="btn-lg center-block"><%= link_to 'Add Bookmark', new_bookmark_path %></button>
 </div>
+<br>
+<br>
+<br>
+  <% @bookmarks.each do |bookmark| %>
+        <div class="col-sm-7 col-md-5">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title"><%= link_to bookmark.title, bookmark.url, target: :_blank %></h3>
+            </div>
+
+            <div class="panel-body">
+              <%= image_tag bookmark.image_bookmark %>
+
+              <div class="col-md-12 center-block">
+                <button id="singlebutton" name="singlebutton" class="btn btn-primary"><%= link_to 'Show', bookmark %></button>
+                <button id="singlebutton" name="singlebutton" class="btn btn-info"><%= link_to 'Edit', edit_bookmark_path(bookmark) %></button>
+                <button id="singlebutton" name="singlebutton" class="btn btn-danger"><%= link_to 'Destroy', bookmark, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+              </div>
+            </div>
+          </div>
+        </div>
+  <% end %>
+
+
 
 
