@@ -28,13 +28,13 @@ class BookmarksController < ApplicationController
 
     # Add BD :image_bookmark format last_url.png
     name_image_bookmark = @bookmark.url.split('/').last
-    @bookmark.image_bookmark = "#{name_image_bookmark}.png".gsub!(/^\"|\"?$/, '')
+    @bookmark.image_bookmark = "images/" + "#{name_image_bookmark}.png".gsub!(/^\"|\"?$/, '')
 
     # Add image url in app/assets/images/image_bookmark/
     sm = ScreenshotMachine.new(@bookmark.url)
     # Returns a binary stream of the file
     arr = sm.screenshot
-    File.open("app/assets/images/image_bookmark/#{name_image_bookmark}.png", 'wb') { |fp| fp.write(arr) }
+    File.open("public/images/#{name_image_bookmark}.png", 'wb') { |fp| fp.write(arr) }
 
     # Add title in DD
     document = Nokogiri::HTML(open(@bookmark.url))
