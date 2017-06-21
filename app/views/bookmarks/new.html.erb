@@ -1,4 +1,4 @@
-<h1>New Bookmark</h1>
+<h1 class="text-center">New Bookmark</h1>
 
 <%= form_for(@bookmark) do |f| %>
     <% if @bookmark.errors.any? %>
@@ -13,14 +13,19 @@
         </div>
     <% end %>
 
-    <div class="field">
-      <%= f.label :url %><br>
-      <%= f.text_field :url %>
+    <label for="basic-url">Please enter the URL</label>
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon3">https://example.com</span>
+      <%= f.text_field :url, :size => 100 %>
     </div>
 
+    <br>
     <div class="actions">
-      <%= f.submit %>
+      <p>
+        <%= f.submit :class => "btn btn-primary center-block" %>
+      </p>
+
     </div>
 <% end %>
 
-<%= link_to 'Back', bookmarks_path %>
+<%= link_to 'My Bookmarks', bookmarks_path, :class => "btn btn-danger" %>
