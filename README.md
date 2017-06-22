@@ -1,4 +1,4 @@
-= Final Project at Soft Group Academy for course "Ruby on Rails"
+# Final Project at Soft Group Academy for course "Ruby on Rails"
 
 ### Ruby version 2.3.1
 
